@@ -24,18 +24,18 @@ PowerShell DSC scripts to install **SharePoint**, **SQL Server**, **Office Onlin
 ## Prerequisites
 
 ### [SQL Server](https://github.com/dsccommunity/SQLServerDSC/)
-    Install-Module -Name SQLServerDSC
-
-    Install-Module -Name DBATools
+~~~powershell
+Install-Module -Name SQLServerDSC
+Install-Module -Name DBATools
+~~~
 
 > Create 1 new drive (**D** for data)
 
 ### [SharePoint](https://github.com/dsccommunity/SharePointDsc)
-
-    Install-Module -Name SharePointDSC
-
-    Install-Module -Name xDownloadFile
-
+~~~powershell
+Install-Module -Name SharePointDSC
+Install-Module -Name xDownloadFile
+~~~
 > Create 2 new drives (**D** for data and **L** for logs)
 
 
@@ -44,12 +44,16 @@ PowerShell DSC scripts to install **SharePoint**, **SQL Server**, **Office Onlin
 
 > Extract it to C:\Program Files\WindowsPowerShell\Modules\OfficeOnlineServerDsc\1.5.0
 
-    Get-DscResource -Module OfficeOnlineServerDsc
+~~~powershell
+Get-DscResource -Module OfficeOnlineServerDsc
+~~~
 
 > Create 1 new drive (**D** for data)
 
 ### .NET Framework 3.5
-    Install-WindowsFeature Net-Framework-Core -source D:\Sources\sxs
+~~~powershell
+Install-WindowsFeature Net-Framework-Core -source D:\Sources\sxs
+~~~
 
 > `sxs` folder can be found in a Windows Server ISO
 
@@ -77,12 +81,16 @@ PowerShell DSC scripts to install **SharePoint**, **SQL Server**, **Office Onlin
 
 ## Samples
 
-    .\SQLServer2019.ps1 -SqlInstallCredential AD\dev_sql_Install -SqlServiceCredential AD\dev_sql_Services
+~~~powershell
+.\SQLServer2019.ps1 -SqlInstallCredential AD\dev_sql_Install -SqlServiceCredential AD\dev_sql_Services
 
-    .\SharePoint2019.ps1 -FarmAccount AD\dev_shp_Farm -SPSetupAccount AD\dev_shp_Install -WebPoolManagedAccount AD\dev_shp_Pool -ServicePoolManagedAccount AD\dev_shp_Srv -SyncAccount AD\dev_shp_Sync -Passphrase P@ssphras3
+.\SharePoint2019.ps1 -FarmAccount AD\dev_shp_Farm -SPSetupAccount AD\dev_shp_Install
+-WebPoolManagedAccount AD\dev_shp_Pool -ServicePoolManagedAccount AD\dev_shp_Srv -SyncAccount
+AD\dev_shp_Sync -Passphrase P@ssphras3
 
-    .\SharePoint2019UPA.ps1 -SPSetupAccount AD\dev_shp_Install -SyncAccount AD\dev_shp_Sync
+.\SharePoint2019UPA.ps1 -SPSetupAccount AD\dev_shp_Install -SyncAccount AD\dev_shp_Sync
 
-    .\OOS2019.ps1 -InternalUrl "http://dev-office.local"
+.\OOS2019.ps1 -InternalUrl "http://dev-office.local"
 
-    .\SharePoint2019CU.ps1 -SPSetupAccount AD\dev_shp_Install
+.\SharePoint2019CU.ps1 -SPSetupAccount AD\dev_shp_Install
+~~~
