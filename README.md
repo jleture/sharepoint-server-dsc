@@ -84,7 +84,7 @@ Install-WindowsFeature Net-Framework-Core -source D:\Sources\sxs
 ~~~powershell
 .\SQLServer2019.ps1 -SqlInstallCredential AD\dev_sql_Install -SqlServiceCredential AD\dev_sql_Services
 
-.\SharePoint2019.ps1 -FarmAccount AD\dev_shp_Farm -SPSetupAccount AD\dev_shp_Install
+.\SharePoint2019.ps1 -FarmAccount AD\dev_shp_Farm -SetupAccount AD\dev_shp_Install
 -WebPoolManagedAccount AD\dev_shp_Pool -ServicePoolManagedAccount AD\dev_shp_Srv -SyncAccount
 AD\dev_shp_Sync -Passphrase P@ssphras3
 
