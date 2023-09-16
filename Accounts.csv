@@ -1,0 +1,11 @@
+﻿Username;Password;Description
+dev_sql_Install;a-super-secret-password;SQL Server install account
+dev_sql_Services;a-super-secret-password;SQL Server service account
+dev_shp_Farm;a-super-secret-password;SharePoint farm account
+dev_shp_Install;a-super-secret-password;SharePoint install account
+dev_shp_Pool;a-super-secret-password;SharePoint web application pool account
+dev_shp_Srv;a-super-secret-password;SharePoint service account
+dev_shp_Sync;a-super-secret-password;AD user synchronization account
+dev_shp_SU;a-super-secret-password;SharePoint Super User account
+dev_shp_SR;a-super-secret-password;SharePoint Super Reader account
+dev_shp_App;a-super-secret-password;SharePoint App Catalog account

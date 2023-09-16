@@ -14,17 +14,24 @@ Configuration SharePoint2019CU
 
     node $Computer
     {
-        SPProductUpdate ProductUpdate {
-            SetupFile            = "D:\Sources\SharePoint2019\Updates\wssloc2019-kb5002310-fullfile-x64-glb.exe"
+        SPProductUpdate ProductUpdate1 {
+            SetupFile            = "D:\Sources\SharePoint2019\Updates\wssloc2019-kb5002422-fullfile-x64-glb.exe"
             ShutdownServices     = $true
             PsDscRunAsCredential = $SetupAccount
+        }
+
+        SPProductUpdate ProductUpdate2 {
+            SetupFile            = "D:\Sources\SharePoint2019\Updates\sts2019-kb5002436-fullfile-x64-glb.exe"
+            ShutdownServices     = $true
+            PsDscRunAsCredential = $SetupAccount
+            DependsOn            = "[SPProductUpdate]ProductUpdate1"
         }
 
         SPConfigWizard PSConfig {
             IsSingleInstance     = "Yes"
             Ensure               = "Present"
             PsDscRunAscredential = $SetupAccount
-            DependsOn            = "[SPProductUpdate]ProductUpdate"
+            DependsOn            = "[SPProductUpdate]ProductUpdate2"
         }
     }
 }

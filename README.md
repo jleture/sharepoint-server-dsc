@@ -9,12 +9,15 @@ PowerShell DSC scripts to install **SharePoint**, **SQL Server**, **Office Onlin
 | Version | Date | Comments |
 | - | - | - |
 | 1.0 | 2023-07-21 | Initial release
+| 1.1 | 2023-09-16 | Add a script to create service accounts
 
 ## Files
 | File | Role |
 | - | - |
+| **CreateAccounts.ps1** | PowerShell script to create service accounts |
 | **SQLServer2019.ps1** | DSC to install SQL Server 2019 |
 | **SharePoint2019.ps1** | DSC to install SharePoint 2019 |
+| **SharePoint2019v2.ps1** | DSC to install SharePoint 2019 with CU before creating a new farm |
 | **OOS2019.ps1** | DSC to install Office Online Server 2019 |
 | **SharePoint2019UPA.ps1** | DSC to add 'User Profile Application' to an existing SharePoint 2019 |
 | **CreateUPA.ps1** | Classic PowerShell script to create 'User Profile Application' in case DSC is not working |
@@ -82,15 +85,17 @@ Install-WindowsFeature Net-Framework-Core -source D:\Sources\sxs
 ## Samples
 
 ~~~powershell
+.\CreateAccounts.ps1
+
 .\SQLServer2019.ps1 -SqlInstallCredential AD\dev_sql_Install -SqlServiceCredential AD\dev_sql_Services
 
 .\SharePoint2019.ps1 -FarmAccount AD\dev_shp_Farm -SetupAccount AD\dev_shp_Install
 -WebPoolManagedAccount AD\dev_shp_Pool -ServicePoolManagedAccount AD\dev_shp_Srv -SyncAccount
-AD\dev_shp_Sync -Passphrase P@ssphras3
+AD\dev_shp_Sync -Passphrase "P@ssphras3"
 
 .\SharePoint2019UPA.ps1 -SPSetupAccount AD\dev_shp_Install -SyncAccount AD\dev_shp_Sync
 
 .\OOS2019.ps1 -InternalUrl "http://dev-office.local"
 
-.\SharePoint2019CU.ps1 -SPSetupAccount AD\dev_shp_Install
+.\SharePoint2019CU.ps1 -SetupAccount AD\dev_shp_Install
 ~~~
